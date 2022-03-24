@@ -1,14 +1,37 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import {
+   MuiThemeProvider,
+   createTheme,
+   CssBaseline,
+} from "@material-ui/core";
+// import theme from "theme";
+import FiraCode from 'assets/fonts/FiraCode-Regular.ttf';
+const theme = createTheme({
+  typography: {
+    fontFamily:
+      '"Fira Code", sans-serif',
+  },
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        '@font-face': [FiraCode],
+      },
+    },
+  },
+});
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+   <React.StrictMode>
+      <MuiThemeProvider theme={theme}>
+         <CssBaseline />
+         <App />
+      </MuiThemeProvider>
+   </React.StrictMode>,
+   document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
